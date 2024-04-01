@@ -26,7 +26,11 @@ fn main_menu(num_vehicles: u8) {
 	println!("********************");
 	println!("***** CAR PARK *****");
 	println!("********************");
-	println!("** Parked count: {}", num_vehicles);
+	if num_vehicles < 10 {
+		println!("** Parked count: {}", num_vehicles);
+	} else {
+		println!("** CAR PARK FULL");
+	}
 	println!("********************\n");
 	println!("******* MENU *******");
 	println!("q: Quit");
@@ -59,13 +63,25 @@ fn main() {
 				return
 			},
 			'1' => { // Incomming vehicle
-				println!("Enter the vehicle license plate:");
-				let mut incomming_vehicle = String::new();
-				io::stdin()
-					.read_line(&mut incomming_vehicle)
-					.expect("Failed to read line");
-			
-				vehicles.push(Vehicle::vehicle_enters(&incomming_vehicle));
+				if vehicles.len() == 10 {
+					clear_screen::clr();
+					println!("*************************");
+					println!("***   CAR PARK FULL   ***");
+					println!("*************************");
+					println!("*** ENTER TO CONTINUE ***");
+					let mut ret = String::new();
+					io::stdin()
+						.read_line(&mut ret)
+						.expect("Failed to read line");
+				} else {
+					println!("Enter the vehicle license plate:");
+					let mut incomming_vehicle = String::new();
+					io::stdin()
+						.read_line(&mut incomming_vehicle)
+						.expect("Failed to read line");
+				
+					vehicles.push(Vehicle::vehicle_enters(&incomming_vehicle));
+				}
 			},
 			'2' => { // Outgoing vehicle			
 				clear_screen::clr();
