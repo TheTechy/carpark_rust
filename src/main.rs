@@ -1,12 +1,12 @@
 // CARPARK
 // There is a carpark with 10 spaces
-// Log each vehicle license plate as it enters
+// Log each vehicle's license plate as it enters
 // Allow 10 seconds of free time within the carpark before starting to charge at £0.01 per second
 // Parking bays are allocated sequentially 0..10
 // Keep track of how many space are free and if all 10 are full, display a message saying full and disallow entry
 // When a car exits, generate an invoice for time spent and display on screen
-// Applications has three options
-// Q: Quit application
+// The application has three options
+// q: Quit application
 // 1: Vehicle enters
 // 2: Vehicle leaves
 // 3: List vehicles with time parked and current cost for each
